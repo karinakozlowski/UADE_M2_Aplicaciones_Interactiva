@@ -1,250 +1,248 @@
-## AI Interprise Intellegent Business  | Gosht Load Server
+# UADE · Módulo 2 — Aplicaciones Interactivas
 
+## Laboratorio de arquitectura empresarial y persistencia de datos con Java
 
-<p align="center">
-  <a href="https://youtu.be/ACqUvRgQqZY?si=gKL-bPkWQ4mJ9nM5">
-    <img src="docs/images/youtube_kry_style.png" alt="YouTube" width="190">
-  </a>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/No-Country-simulation/S07-26-Team-26/blob/main/docs/README.md">
-    <img src="docs/images/next_steps_kry_style.png" alt="Next Steps" width="190">
-  </a>
-</p>
+**Tecnologías:** Java 21 · Spring Boot · Spring Data JPA · Hibernate · PostgreSQL · Maven · Docker Compose · Eclipse IDE
 
-**Identificador de Eficiencia de Data Centers**
+> **Estado:** ejercicio en preparación. La ejecución local y las pruebas deben verificarse antes de marcar el laboratorio como completado.
 
+## 1. Propósito académico
 
-Ghost Load es una aplicación empresarial para operadores de data centers que ayuda a identificar capacidad no productiva, evaluar madurez operativa y generar reportes PDF personalizados. El proyecto está diseñado como un monolito modular con una arquitectura hexagonal que separa el negocio de las tecnologías externas.
-<br>
-<br>
-![Frontend Evaluación](docs/images/Ficha_Presentacion.png)
+Este repositorio documenta un ejercicio práctico de Ingeniería de Software: comprender cómo una aplicación empresarial implementada con **Java y Spring Boot** accede a información persistente mediante **Spring Data JPA, Hibernate y PostgreSQL**.
 
+La práctica parte de un proyecto real existente en GitHub, en lugar de construir una aplicación desde cero. El foco es **analizar una arquitectura, identificar responsabilidades y demostrar una operación de escritura y otra de lectura**.
 
+### Resultados de aprendizaje
 
-docs/images/Banner_Presentacion.png
+Al finalizar, el estudiante podrá:
 
-![Frontend Evaluación](docs/images/Banner_Presentacion.png)
-<br>
-<br>
+- Identificar una necesidad del negocio y traducirla en un caso de uso de software.
+- Distinguir frontend, API REST, aplicación, dominio y persistencia.
+- Explicar las diferencias entre **JPA** (especificación), **Hibernate** (implementación ORM), **Spring Data JPA** (abstracción de repositorios) y **JDBC** (acceso a la base de datos).
+- Reconocer anotaciones como `@Entity`, `@Table`, `@Id` y `@Column` en el código existente, cuando corresponda.
+- Seguir el recorrido de una solicitud HTTP hasta PostgreSQL y su respuesta.
+- Verificar que una operación realmente modifica o consulta datos persistentes.
 
-## Flujo operativo
+## 2. Caso empresarial: Ghost Load
 
-Ghost Load automatiza el recorrido completo del operador, desde la invitación hasta la generación del reporte final:
+El proyecto de referencia es **Ghost Load**, una aplicación empresarial orientada a evaluar la eficiencia y la capacidad no productiva de centros de datos. Su documentación describe funcionalidades de registro de operadores, evaluaciones, indicadores, benchmarks y generación de reportes.
 
-1. El administrador crea y envía una **campaña por email**.
-2. El operador recibe la invitación e ingresa a la plataforma.
-3. Completa la **calculadora de capacidad**.
-4. Responde el **benchmark de madurez operativa**.
-5. El sistema procesa los resultados y genera métricas e insights.
-6. Finalmente, se crea un **reporte PDF personalizado** listo para descargar y compartir.
-<br>
-<br>
+**Repositorio original:** [No-Country-simulation/S07-26-Team-26](https://github.com/No-Country-simulation/S07-26-Team-26)
 
+Este repositorio académico **no se presenta como autor del software original**. Se utiliza como caso de estudio y deben conservarse los avisos de licencia y atribución aplicables. Revisar la licencia del repositorio fuente antes de redistribuir su código.
 
-![Frontend Evaluación](docs/images/Diagram_Secuencia.png)
-<br>
-<br>
+### Escenario elegido
 
+**Registrar un operador y crear o recuperar una evaluación.**
 
+El ejercicio deberá identificar en el código real:
 
+1. Una operación de escritura: solicitud HTTP → caso de uso → persistencia en PostgreSQL.
+2. Una operación de lectura: consulta en PostgreSQL → backend → respuesta HTTP.
+3. La entidad, el repositorio y el adaptador de persistencia involucrados.
 
-## Resumen ejecutivo
+> **Importante:** los nombres exactos de clases, rutas HTTP y tablas se completarán después de que Codex los verifique en el repositorio. No deben inventarse endpoints ni modificar la arquitectura original para que coincida con un ejemplo genérico.
 
-El dashboard ejecutivo de **Ghost Load** consolida los principales indicadores de eficiencia del data center en una única vista.
+## 3. Arquitectura conceptual
 
-Permite visualizar la **capacidad total**, la **capacidad no productiva**, el nivel de **madurez operativa**, el **ahorro potencial** y la evolución de los principales KPIs.
-
-Además, compara los resultados obtenidos con **benchmarks de la industria** y facilita la identificación de oportunidades de optimización para apoyar decisiones basadas en datos.
-<br>
-<br>
-
-![Frontend Evaluación](docs/images/Resumen_Ejecutivo.png)
-<br>
-<br>
-
-
-## El equipo detrás de Ghost Load
-
-**Ghost Load** fue desarrollado por un equipo multidisciplinario que combina gestión de producto, arquitectura de software, desarrollo backend, frontend e infraestructura cloud.
-El equipo trabaja de forma colaborativa para construir una solución **escalable, segura y orientada a datos**, integrando tecnologías modernas de desarrollo y servicios de **AWS Cloud**.
-
-![Frontend Evaluación](docs/images/Banner_Equipo.png)
-
-<br>
-<br>
-
-
-![Frontend Evaluación](docs/images/Arquitectura.png)
-
-
-# Stack tecnológico
-
-## Lenguajes
-
-- **Java 21** — Backend
-  - Aproximadamente **93.7%** del proyecto
-  - Spring Boot 4.1.0
-
-- **TypeScript** — Frontend
-  - Aproximadamente **5.8%** del proyecto
-  - React 19
-  - Next.js 16.2.11
-
-## Frameworks y runtime
-
-### Backend
-
-- **Spring Boot 4.1.0**
-- **Java 21**
-- **Maven**
-
-### Frontend
-
-- **Next.js 16.2.11**
-- **React 19**
-- **TypeScript**
-
-## Tecnologías principales
-
-- **Base de datos:** PostgreSQL 16
-- **Autenticación:** JWT — JSON Web Tokens
-- **Generación de PDF:** OpenHtmlToPDF
-- **Procesamiento de CSV:** Apache Commons CSV
-- **State Management:** Zustand
-- **HTTP Client:** TanStack React Query
-- **UI Components:** Lucide React
-- **Estilos:** Tailwind CSS
-- **Contenedores:** Docker
-- **Cloud:** AWS
-
----
-
-# Estructura del proyecto
-
-```text
-.
-├── backend/                          # API REST con lógica de negocio
-│   ├── src/main/java/com/ghostload/api/
-│   │   ├── assessment/              # Evaluaciones y calculadora
-│   │   ├── reporting/               # Generación de reportes PDF
-│   │   ├── outreach/                # Campañas e invitaciones
-│   │   ├── administration/          # Panel admin y login
-│   │   ├── shared/                  # Código compartido
-│   │   └── config/                  # Configuración Spring
-│   ├── pom.xml                      # Dependencias Maven
-│   ├── .env.example                 # Variables de entorno
-│   └── Dockerfile
-│
-├── frontend/                         # Interfaz web con Next.js
-│   ├── package.json
-│   ├── Dockerfile
-│   └── src/
-│
-├── docker-compose.yml               # Orquestación de servicios
-├── README.md                        # Documentación principal
-└── docs/
-    ├── README.md
-    ├── openapi.yaml                 # Contrato HTTP
-    └── images/
-
-
----
+```mermaid
+flowchart TD
+    U[Usuario / navegador] --> F[Frontend React / Next.js]
+    F -->|HTTP / JSON| C[API REST - Spring Boot]
+    C --> I[Adaptador de entrada / caso de uso]
+    I --> D[Aplicación y dominio]
+    D --> P[Puerto de salida]
+    P --> A[Adaptador de persistencia]
+    A --> R[Spring Data JPA]
+    R --> H[Hibernate - ORM]
+    H -->|JDBC / SQL| DB[(PostgreSQL)]
 ```
 
+**Nota arquitectónica:** Ghost Load documenta un **monolito modular con arquitectura hexagonal**. Por eso, el recorrido real puede incluir puertos y adaptadores en lugar de la secuencia simplificada `Controller → Service → Repository`. Se deben respetar las clases y dependencias efectivamente implementadas.
 
+## 4. Tecnologías y responsabilidades
 
-## Diccionario de servicios Docker
+| Componente | Responsabilidad |
+|---|---|
+| Java 21 | Lenguaje y entorno de ejecución del backend. |
+| Spring Boot | Configuración y ejecución de la aplicación. |
+| Spring Web / MVC | Exposición de endpoints HTTP. |
+| Spring Data JPA | Interfaces y operaciones de repositorio. |
+| JPA (Jakarta Persistence) | Especificación de persistencia objeto-relacional. |
+| Hibernate | Implementación ORM y gestión de entidades. |
+| JDBC / driver PostgreSQL | Comunicación con el motor de base de datos. |
+| PostgreSQL 16 | Almacenamiento relacional persistente. |
+| Flyway | Versionado de cambios en el esquema de base de datos. |
+| Maven | Gestión de dependencias y construcción del backend. |
+| Docker Compose | Ejecución coordinada de los servicios locales. |
+| Eclipse IDE | Lectura, edición y depuración del código Java. |
 
-| Componente | Servicio Docker | Contenedor | Tecnología / imagen | Puerto local | Puerto interno | Descripción |
-| --- | --- | --- | --- | --- | --- | --- |
-| Base de datos | `postgres` | `ghost-load-db` | `postgres:16-alpine` | `5432` | `5432` | Almacena los datos de la aplicación |
-| Backend | `backend` | `backend` | Spring Boot / Dockerfile en `./backend` | `8080` | `8080` | API y lógica de negocio |
-| Frontend | `frontend` | `frontend` | Next.js / Dockerfile en `./frontend` | `3001` | `3000` | Interfaz web de la aplicación |
+## 5. Requisitos del entorno
 
-### PostgreSQL
+Para reproducir la aplicación completa en una computadora Windows:
 
-| Propiedad | Valor |
-| --- | --- |
-| Host dentro de Docker | `postgres` |
-| Puerto | `5432` |
-| Base de datos | `ghost_load` |
-| Usuario local | `postgres` |
-| Volumen persistente | `postgres_data` |
-| Ruta del volumen | `/var/lib/postgresql/data` |
-| URL utilizada por el backend | `jdbc:postgresql://postgres:5432/ghost_load` |
+- Git.
+- JDK 21.
+- Docker Desktop con Docker Compose y los requisitos de virtualización correspondientes.
+- Eclipse IDE con soporte Maven (recomendado para estudiar el código).
+- Acceso a internet para descargar dependencias e imágenes de contenedores.
 
-### Comunicación entre servicios
+**No es obligatorio instalar PostgreSQL directamente en Windows:** el proyecto original incluye un servicio PostgreSQL mediante Docker Compose. Tampoco es necesario generar otro proyecto en Spring Initializr: el backend y su `pom.xml` ya existen.
 
-- El frontend se comunica con el backend mediante `http://backend:8080`.
-- El backend se comunica con PostgreSQL mediante `postgres:5432`.
-- PostgreSQL debe estar saludable antes de iniciar el backend.
-- El backend debe iniciarse antes que el frontend.
+## 6. Obtener el proyecto de referencia
 
-### Acceso desde la computadora
+```powershell
+git clone https://github.com/No-Country-simulation/S07-26-Team-26.git
+cd S07-26-Team-26
+```
 
-| Aplicación | Dirección |
-| --- | --- |
-| Frontend | `http://localhost:3001` |
-| Backend | `http://localhost:8080` |
-| PostgreSQL | `localhost:5432` |
+Crear una rama de trabajo para experimentos locales, sin modificar la rama principal del proyecto original:
 
-> Los nombres `postgres`, `backend` y `frontend` funcionan como nombres de host dentro de la red interna de Docker Compose.
+```powershell
+git switch -c laboratorio-jpa
+```
 
+### Configuración local
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Ejecución con Docker
-
-Todos los servicios se levantan desde el único `docker-compose.yml` ubicado en
-la raíz del repositorio.
-
-Primero crea el archivo local de variables y completa sus valores:
+El README del proyecto fuente indica crear `backend/.env` desde su plantilla:
 
 ```powershell
 Copy-Item backend/.env.example backend/.env
 ```
 
-Después ejecuta, desde la raíz del repositorio:
+Completar las variables requeridas con valores **solo de desarrollo**. No publicar contraseñas, tokens, archivos `.env` ni claves de API.
+
+## 7. Levantar los servicios
+
+Desde la **raíz del proyecto original**, una vez configurado Docker Desktop y el archivo `.env`:
 
 ```powershell
 docker compose --env-file backend/.env up --build
 ```
 
-No utilices solamente `docker compose up`, porque Docker Compose necesita las
-variables definidas en `backend/.env`.
+Según la documentación del repositorio original, los servicios locales previstos son:
 
-Cuando Docker informe que el backend está saludable, también puedes comprobarlo
-manualmente sin autenticación:
+| Servicio | Dirección local esperada |
+|---|---|
+| Frontend | `http://localhost:3001` |
+| Backend | `http://localhost:8080` |
+| PostgreSQL | `localhost:5432` |
+
+**Estas direcciones son las documentadas, no una confirmación de que estén activas en tu computadora.**
+
+Para comprobar la salud del backend, el repositorio documenta:
 
 ```powershell
 curl.exe http://localhost:8080/actuator/health
-curl.exe http://localhost:8080/actuator/health/liveness
-curl.exe http://localhost:8080/actuator/health/readiness
 ```
 
-Los endpoints específicos devuelven `{"status":"UP"}` cuando el proceso está
-vivo y el backend puede conectarse a PostgreSQL. El endpoint general también
-enumera los grupos públicos `liveness` y `readiness`, pero no expone
-credenciales ni detalles de los componentes internos.
-
-Para detener todos los servicios:
+Para detener los servicios:
 
 ```powershell
 docker compose --env-file backend/.env down
 ```
 
+> No ejecutar `down -v` durante la práctica: esa opción puede eliminar volúmenes y datos persistentes.
+
+## 8. Abrir el código en Eclipse
+
+1. Abrir Eclipse y seleccionar el JDK 21.
+2. Elegir **File → Import → Maven → Existing Maven Projects**.
+3. Seleccionar la carpeta `S07-26-Team-26/backend`.
+4. Importar el proyecto detectado a partir de `pom.xml`.
+5. Explorar `src/main/java` y `src/main/resources`.
+6. Identificar la clase principal, las entidades JPA, los repositorios y los adaptadores de persistencia.
+
+Si el backend ya se ejecuta en Docker, evitar iniciar una segunda instancia en el mismo puerto `8080` sin ajustar la configuración.
+
+## 9. Actividad práctica: seguir el recorrido de los datos
+
+### Parte A — Reconocimiento
+
+Localizar en el código fuente real:
+
+- El controlador o adaptador de entrada del caso elegido.
+- El caso de uso o servicio de aplicación.
+- Los puertos de salida, si corresponden.
+- El adaptador de persistencia y el repositorio Spring Data JPA.
+- Las clases anotadas con JPA.
+- La configuración de PostgreSQL y las migraciones Flyway.
+
+Registrar sus **rutas exactas** en la sección de evidencias.
+
+### Parte B — Escritura
+
+Ejecutar una solicitud válida para registrar un operador o crear una evaluación, utilizando **un endpoint existente y verificado**. Observar:
+
+- Método HTTP y respuesta.
+- Validaciones y reglas de negocio.
+- Invocación del repositorio o adaptador.
+- Persistencia del registro en PostgreSQL.
+
+### Parte C — Lectura
+
+Ejecutar una consulta existente que permita recuperar el registro o su resultado. Comprobar que la información proviene del almacenamiento persistente y no solamente de un objeto temporal en memoria.
+
+### Parte D — Verificación SQL
+
+Conectarse a PostgreSQL usando una herramienta autorizada (por ejemplo, `psql` o pgAdmin), identificar la tabla correspondiente y realizar una consulta `SELECT` de **solo lectura** para verificar el resultado. No asumir nombres de tablas o columnas antes de inspeccionar el esquema.
+
+## 10. Plan de demostración de 20 minutos
+
+| Tiempo | Actividad |
+|---|---|
+| 0–3 min | Necesidad empresarial y presentación de Ghost Load. |
+| 3–6 min | Arquitectura: frontend, backend, puertos, adaptadores y PostgreSQL. |
+| 6–10 min | Entidad JPA, repositorio e implementación ORM. |
+| 10–14 min | Ejecutar la operación de escritura. |
+| 14–17 min | Ejecutar lectura y verificar los datos en PostgreSQL. |
+| 17–20 min | Conclusiones: persistencia, separación de responsabilidades y preguntas. |
+
+**Sugerencia docente:** instalar y levantar todo **antes de comenzar la exposición**. La instalación completa de herramientas no forma parte de los 20 minutos de demostración.
+
+## 11. Evidencias y checklist
+
+- [ ] Entorno Java 21 verificado.
+- [ ] Docker Compose funcionando.
+- [ ] Proyecto clonado e importado en Eclipse.
+- [ ] Backend iniciado sin errores.
+- [ ] PostgreSQL accesible.
+- [ ] Entidad JPA y repositorio identificados.
+- [ ] Operación de escritura ejecutada correctamente.
+- [ ] Operación de lectura ejecutada correctamente.
+- [ ] Persistencia comprobada mediante SQL.
+- [ ] Capturas o registros de la demostración incorporados.
+
+### Archivos reales del flujo seleccionado
+
+| Elemento | Ruta verificada | Función |
+|---|---|---|
+| Endpoint / controlador | Pendiente | Entrada HTTP |
+| Caso de uso / servicio | Pendiente | Lógica de aplicación |
+| Adaptador de persistencia | Pendiente | Acceso a datos |
+| Entidad JPA | Pendiente | Mapeo objeto-relacional |
+| Repositorio | Pendiente | Operaciones de persistencia |
+| Migración / tabla | Pendiente | Esquema de PostgreSQL |
+
+## 12. Preguntas para discusión
+
+1. ¿Qué diferencia existe entre un objeto Java en memoria y un registro persistido en PostgreSQL?
+2. ¿Por qué JPA es una especificación y Hibernate una implementación?
+3. ¿Qué responsabilidad tiene Spring Data JPA frente a Hibernate?
+4. ¿Qué aporta la arquitectura hexagonal al desacoplamiento del dominio y la infraestructura?
+5. Si PostgreSQL se alojara en Amazon RDS o Supabase, ¿qué partes de la aplicación cambiarían?
+6. ¿Por qué una integración con SAP o Airtable no se implementa necesariamente mediante JPA?
+
+## 13. Fuentes y atribución
+
+- [Repositorio Ghost Load — No Country Simulation](https://github.com/No-Country-simulation/S07-26-Team-26)
+- [Spring Boot](https://spring.io/projects/spring-boot)
+- [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
+- [Hibernate ORM](https://hibernate.org/orm/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Docker Compose](https://docs.docker.com/compose/)
+
 ---
 
-
-
+**ADE · Módulo 2 — Aplicaciones Interactivas**  
+*Caso académico de arquitectura y persistencia empresarial. La ejecución práctica debe verificarse en el entorno local.*
