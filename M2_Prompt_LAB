@@ -1,0 +1,285 @@
+# CODEX — PREPARACIÓN DEL LABORATORIO UNIVERSITARIO JAVA
+
+## ROL
+
+Actuá como Senior Java Developer, especialista en Spring Boot, JPA, Hibernate y PostgreSQL, y como docente universitario de Ingeniería de Software.
+
+Necesito que prepares y ejecutes un laboratorio práctico, reproducible y didáctico, utilizando el proyecto Ghost Load que ya instalaste en mi computadora.
+
+**No empieces de cero ni reinstales herramientas. Continuá desde el entorno existente.**
+
+## 1. CONTEXTO
+
+Proyecto original:
+
+https://github.com/No-Country-simulation/S07-26-Team-26
+
+Repositorio académico:
+
+https://github.com/karinakozlowski/UADE_M2_Aplicaciones_Interactiva
+
+Ya se realizaron las siguientes tareas:
+
+- Instalación de Java 21.
+- Instalación de Eclipse IDE.
+- Instalación de Docker Desktop y WSL2.
+- Clonación de Ghost Load.
+- Configuración de PostgreSQL.
+- Compilación del backend.
+- Ejecución de 71 pruebas exitosas.
+- Ejecución del frontend en localhost:3001.
+- Registro de operador con HTTP 201.
+- Consultas HTTP 200.
+- Verificación de datos persistidos en PostgreSQL.
+
+Estos resultados corresponden al avance anterior. Verificá que el entorno continúe funcionando antes de utilizarlos.
+
+## 2. OBJETIVO ACADÉMICO
+
+Preparar una demostración práctica de aproximadamente 20 minutos en la que los estudiantes comprendan:
+
+1. Para qué sirve Spring Initializr.
+2. Qué es Spring Boot.
+3. Cómo se organiza un proyecto Java con Maven.
+4. Qué es una entidad JPA.
+5. Qué hace Spring Data JPA.
+6. Cómo interviene Hibernate.
+7. Cómo se conecta Java con PostgreSQL.
+8. Cómo una solicitud HTTP termina consultando o guardando información en una base de datos.
+
+Utilizar Ghost Load como caso empresarial real.
+
+No crear una segunda aplicación innecesaria.
+
+## 3. ETAPA A — MOSTRAR SPRING INITIALIZR
+
+Abrí, si el entorno lo permite:
+
+https://start.spring.io/
+
+Prepará una demostración visual de cómo se configuraría un proyecto similar:
+
+- Project: Maven.
+- Language: Java.
+- Spring Boot: versión estable compatible con Java 21.
+- Group: com.empresa.
+- Artifact: laboratorio-jpa.
+- Packaging: Jar.
+- Java: 21.
+
+Dependencias a mostrar:
+
+- Spring Web / Spring Web MVC, según la versión.
+- Spring Data JPA.
+- PostgreSQL Driver.
+- Validation.
+
+Explicá para qué sirve cada dependencia.
+
+No descargues ni crees este segundo proyecto salvo que yo lo autorice.
+
+Mostrá la relación entre las opciones de Spring Initializr y el archivo pom.xml que ya existe en Ghost Load.
+
+## 4. ETAPA B — ABRIR GHOST LOAD EN ECLIPSE
+
+Verificá que el backend esté correctamente importado en Eclipse como proyecto Maven.
+
+Si todavía no está importado, realizá la importación.
+
+Utilizá Java 21.
+
+Identificá la clase principal de Spring Boot.
+
+Abrí los siguientes archivos reales:
+
+- pom.xml.
+- Clase principal Spring Boot.
+- Controller del ejercicio.
+- Caso de uso o servicio.
+- Adaptador de persistencia.
+- Repositorio Spring Data JPA.
+- Entidad JPA.
+- Configuración de PostgreSQL.
+- Migración Flyway correspondiente.
+
+No inventes rutas ni nombres.
+
+## 5. ETAPA C — PREPARAR EL EJERCICIO
+
+Seleccioná un caso de uso real de Ghost Load:
+
+**Registrar un operador y crear una evaluación de eficiencia de un centro de datos.**
+
+Prepará dos operaciones:
+
+### Operación 1 — Escritura
+
+Ejecutar una solicitud HTTP para registrar un operador o crear una evaluación.
+
+Demostrar:
+
+HTTP POST → Spring Boot → Controller → caso de uso → adaptador de persistencia → Spring Data JPA → Hibernate → PostgreSQL.
+
+Verificar el resultado mediante una consulta SQL.
+
+### Operación 2 — Lectura
+
+Ejecutar una solicitud HTTP GET existente para recuperar la información registrada.
+
+Demostrar:
+
+PostgreSQL → Hibernate → Spring Data JPA → adaptador → caso de uso → Controller → JSON.
+
+Si los endpoints reales usan otros métodos HTTP, adaptá la explicación a su implementación.
+
+## 6. ETAPA D — DEMOSTRAR JPA E HIBERNATE
+
+Identificá las clases reales que utilizan:
+
+@Entity
+
+@Table
+
+@Id
+
+@Column
+
+@GeneratedValue
+
+Explicá el significado de cada anotación que efectivamente exista.
+
+Identificá los repositorios y sus operaciones.
+
+Explicá cómo Hibernate transforma operaciones sobre entidades Java en instrucciones SQL.
+
+Diferenciá claramente:
+
+- Spring Boot: framework de aplicación.
+- Spring Initializr: generador de proyectos.
+- JPA: especificación de persistencia.
+- Hibernate: implementación ORM.
+- Spring Data JPA: abstracción de repositorios.
+- JDBC: interfaz de acceso a bases de datos.
+- PostgreSQL: motor de base de datos relacional.
+- Maven: herramienta de construcción y dependencias.
+- Eclipse: entorno de desarrollo.
+
+## 7. ETAPA E — EJECUCIÓN REAL
+
+Prepará y verificá los comandos para:
+
+1. Iniciar Docker Desktop.
+2. Levantar PostgreSQL.
+3. Levantar el backend.
+4. Levantar el frontend.
+5. Ejecutar el registro.
+6. Ejecutar la consulta.
+7. Consultar PostgreSQL.
+8. Detener los servicios sin eliminar datos.
+
+Utilizá las variables de entorno existentes.
+
+No muestres contraseñas.
+
+No elimines volúmenes Docker.
+
+No ejecutes simultáneamente dos instancias del backend en el mismo puerto.
+
+Comprobá la persistencia después de reiniciar los contenedores.
+
+## 8. ETAPA F — CREAR EL MATERIAL DEL LABORATORIO
+
+Dentro del repositorio académico, prepará una carpeta:
+
+laboratorio-springboot-jpa
+
+Crear los siguientes archivos:
+
+**README.md**
+
+Objetivos, requisitos, arquitectura, instrucciones y resultados esperados.
+
+**GUIA-PASO-A-PASO.md**
+
+Instrucciones numeradas para ejecutar la práctica.
+
+**SPRING-INITIALIZR.md**
+
+Explicación de cómo crear un proyecto desde Spring Initializr y cómo se relaciona con Ghost Load.
+
+**ARQUITECTURA.md**
+
+Diagrama Mermaid de los componentes y recorrido de persistencia.
+
+**EJERCICIO-JPA-HIBERNATE.md**
+
+Descripción de las entidades, repositorios, endpoints y operaciones SQL reales.
+
+**GUION-DOCENTE-20-MINUTOS.md**
+
+Guion de exposición para una clase de 20 minutos.
+
+**COMANDOS-LABORATORIO.md**
+
+Comandos verificados para iniciar, probar y detener el entorno.
+
+Incorporá rutas exactas de las clases Java y ejemplos de respuestas HTTP verificadas.
+
+No incluyas credenciales ni información sensible.
+
+## 9. ETAPA G — PREPARAR LA DEMOSTRACIÓN
+
+La exposición debe seguir este orden:
+
+| Minutos | Demostración |
+|---|---|
+| 0–2 | Presentación del problema empresarial |
+| 2–4 | Spring Initializr y dependencias |
+| 4–7 | Eclipse, Maven y estructura Spring Boot |
+| 7–11 | Entidad JPA, repositorio e Hibernate |
+| 11–15 | Ejecutar operación de escritura |
+| 15–18 | Ejecutar lectura y verificar PostgreSQL |
+| 18–20 | Conclusiones |
+
+Prepará todo para que pueda realizar la demostración sin tener que escribir código nuevo durante la exposición.
+
+Indicá qué ventanas y archivos debo tener abiertos antes de empezar.
+
+## 10. CRITERIOS DE FINALIZACIÓN
+
+No consideres finalizado el laboratorio hasta verificar:
+
+- Eclipse reconoce correctamente el proyecto.
+- El backend funciona.
+- PostgreSQL está disponible.
+- El frontend funciona.
+- Se puede ejecutar una operación real de escritura.
+- Se puede ejecutar una operación real de lectura.
+- Los datos están persistidos en PostgreSQL.
+- Las rutas de los archivos Java están documentadas.
+- La explicación de Spring Initializr está preparada.
+- El material académico está generado.
+- Existe un guion reproducible de 20 minutos.
+
+## INSTRUCCIÓN FINAL
+
+Comenzá ahora revisando el estado actual del entorno.
+
+Continuá automáticamente con las tareas pendientes.
+
+No reinstales herramientas ni recrees Ghost Load.
+
+Ejecutá las verificaciones reales y prepará los materiales docentes.
+
+Trabajá en una rama independiente y conservá todos los archivos existentes.
+
+No publiques cambios en GitHub sin mi autorización.
+
+Al finalizar, entregame un informe indicando:
+
+1. Qué verificaste.
+2. Qué archivos Java vamos a mostrar.
+3. Qué endpoints vamos a ejecutar.
+4. Qué consulta SQL vamos a utilizar.
+5. Qué archivos académicos generaste.
+6. Cómo iniciar la demostración el día de la clase.
