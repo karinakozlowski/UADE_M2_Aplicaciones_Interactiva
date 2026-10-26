@@ -237,5 +237,5 @@ Conectarse a PostgreSQL usando una herramienta autorizada (por ejemplo, `psql` o
 
 ---
 
-**ADE · Módulo 2 — Aplicaciones Interactivas**  
+**UADE · Módulo 2 — Aplicaciones Interactivas**  
 *Caso académico de arquitectura y persistencia empresarial. La ejecución práctica debe verificarse en el entorno local.*
