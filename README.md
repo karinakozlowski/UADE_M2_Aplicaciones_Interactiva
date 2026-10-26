@@ -187,16 +187,7 @@ Ejecutar una consulta existente que permita recuperar el registro o su resultado
 
 Conectarse a PostgreSQL usando una herramienta autorizada (por ejemplo, `psql` o pgAdmin), identificar la tabla correspondiente y realizar una consulta `SELECT` de **solo lectura** para verificar el resultado. No asumir nombres de tablas o columnas antes de inspeccionar el esquema.
 
-## 10. Plan de demostración de 20 minutos
 
-| Tiempo | Actividad |
-|---|---|
-| 0–3 min | Necesidad empresarial y presentación de Ghost Load. |
-| 3–6 min | Arquitectura: frontend, backend, puertos, adaptadores y PostgreSQL. |
-| 6–10 min | Entidad JPA, repositorio e implementación ORM. |
-| 10–14 min | Ejecutar la operación de escritura. |
-| 14–17 min | Ejecutar lectura y verificar los datos en PostgreSQL. |
-| 17–20 min | Conclusiones: persistencia, separación de responsabilidades y preguntas. |
 
 **Sugerencia docente:** instalar y levantar todo **antes de comenzar la exposición**. La instalación completa de herramientas no forma parte de los 20 minutos de demostración.
 
