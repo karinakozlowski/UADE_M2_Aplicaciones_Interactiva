@@ -224,14 +224,7 @@ Conectarse a PostgreSQL usando una herramienta autorizada (por ejemplo, `psql` o
 | Repositorio | Pendiente | Operaciones de persistencia |
 | Migración / tabla | Pendiente | Esquema de PostgreSQL |
 
-## 12. Preguntas para discusión
 
-1. ¿Qué diferencia existe entre un objeto Java en memoria y un registro persistido en PostgreSQL?
-2. ¿Por qué JPA es una especificación y Hibernate una implementación?
-3. ¿Qué responsabilidad tiene Spring Data JPA frente a Hibernate?
-4. ¿Qué aporta la arquitectura hexagonal al desacoplamiento del dominio y la infraestructura?
-5. Si PostgreSQL se alojara en Amazon RDS o Supabase, ¿qué partes de la aplicación cambiarían?
-6. ¿Por qué una integración con SAP o Airtable no se implementa necesariamente mediante JPA?
 
 ## 13. Fuentes y atribución
 
